@@ -12,9 +12,7 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth,windowHeight);
-
- 
-
+  
   balloon = createSprite(250, 250, 50, 50);
   balloon.addAnimation("balloon", balloonImg)
   balloon.scale = 0.5
@@ -27,6 +25,11 @@ function draw() {
   var balloonPosition = database.ref('balloon/position')
   balloonPosition.on("value",readPosition,showError) 
 
+  textSize(25)
+  fill("black")
+  text("USE ARROW KEYS TO MOVE", windowWidth/2+50, windowHeight/2)
+  text("USE M TO ENLARGEN THE HOT AIR BALLOON AND S TO MINIMIZE", windowWidth/2+100, windowHeight/2+30)
+  
 if(position!==undefined){
   if(keyDown("up")){
     balloon.y = balloon.y-10
@@ -40,7 +43,11 @@ if(position!==undefined){
   } else if (keyDown("left")){
     balloon.x = balloon.x-10
     updatePosition(-10,0)
-  }  
+  } else if(keyDown("m")){
+    balloon.scale = balloon.scale+0.25
+  } else if(keyDown("s")){
+    balloon.scale = balloon.scale-0.25
+  }
 }
   
   drawSprites();
