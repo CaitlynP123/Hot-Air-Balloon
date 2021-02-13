@@ -43,10 +43,6 @@ if(position!==undefined){
   } else if (keyDown("left")){
     balloon.x = balloon.x-10
     updatePosition(-10,0)
-  } else if(keyDown("m")){
-    balloon.scale = balloon.scale+0.25
-  } else if(keyDown("s")){
-    balloon.scale = balloon.scale-0.25
   }
 }
   
